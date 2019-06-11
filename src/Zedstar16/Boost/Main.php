@@ -88,16 +88,15 @@ class Main extends PluginBase implements Listener
                                 $this->getServer()->getPlayer($p)->sendPopup(TextFormat::RED . "Boost disabled");
                             } else $sender->sendMessage(TextFormat::RED . "Boost level must be a number");
                         } else $sender->sendMessage(TextFormat::RED . "Player: $p is not online");
-                    }
-                } else $sender->sendMessage(TextFormat::RED . "You do not have permission to boost other players");
-
-            } elseif (isset($args[0]) && $args[0] == "help") {
-                $sender->sendMessage($help);
-            } else {
-                if ($this->isBoosted($name)) {
-                    $this->setBoosted($name, false);
-                    $sender->sendMessage(TextFormat::GOLD . "Boost disabled");
-                } else $sender->sendMessage($help);
+                    } else $sender->sendMessage(TextFormat::RED . "You do not have permission to boost other players");
+                } elseif (isset($args[0]) && $args[0] == "help") {
+                    $sender->sendMessage($help);
+                } else {
+                    if ($this->isBoosted($name)) {
+                        $this->setBoosted($name, false);
+                        $sender->sendMessage(TextFormat::GOLD . "Boost disabled");
+                    } else $sender->sendMessage($help);
+                }
             }
         }
 
