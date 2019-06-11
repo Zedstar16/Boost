@@ -13,9 +13,12 @@ use pocketmine\level\particle\FlameParticle;
 use pocketmine\level\particle\SmokeParticle;
 use pocketmine\math\Vector3;
 use pocketmine\scheduler\Task;
+use pocketmine\utils\TextFormat;
 
 class BoostTask extends Task
 {
+
+    private $pl;
 
     public function __construct(Main $pl)
     {
@@ -43,6 +46,7 @@ yellow
                 $player = $this->pl->getServer()->getPlayer($p);
                 $v = $player->getDirectionVector();
                 $player->setMotion(new Vector3(($v->getX()*$boost), ($v->getY()*$boost), ($v->getZ()*$boost)));
+                $player->sendPopup(TextFormat::AQUA."Boost Enabled");
                 $player->getLevel()->addParticle(new DustParticle(new Vector3($player->getX(), $player->getY()+0.4, $player->getZ()), 239, 35, 25));
                 $player->getLevel()->addParticle(new DustParticle(new Vector3($player->getX(), $player->getY()+0.2, $player->getZ()), 255, 123, 0));
                 $player->getLevel()->addParticle(new DustParticle(new Vector3($player->getX(), $player->getY(), $player->getZ()), 252, 227, 0));
