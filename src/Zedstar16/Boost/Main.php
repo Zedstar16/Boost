@@ -23,6 +23,7 @@ class Main extends PluginBase implements Listener
     {
         $this->players = [];
         $this->boosts = [];
+        $this->getLogger()->info("Boost, by Zedstar16 enabled\nBoost data cleared");
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         // I intend to make it configurable soon
         //  $this->saveResource("config.yml");
@@ -115,6 +116,5 @@ class Main extends PluginBase implements Listener
     {
         $this->players = [];
         $this->boosts = [];
-
     }
 }
